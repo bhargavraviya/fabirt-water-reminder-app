@@ -7,6 +7,8 @@ import 'package:waterreminder/ui/hydration_progress/progress_painter.dart';
 import 'package:waterreminder/util/num_extension.dart';
 
 class ProgressView extends StatelessWidget {
+  const ProgressView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<WaterBloc>();
@@ -15,8 +17,8 @@ class ProgressView extends StatelessWidget {
     final gradient = SweepGradient(
       transform: GradientRotation(pi * 3 / 2),
       colors: [
-        theme.accentColor.withOpacity(0.5),
-        theme.accentColor.withOpacity(0.5),
+        theme.colorScheme.secondary.withOpacity(0.5),
+        theme.colorScheme.secondary.withOpacity(0.5),
       ],
     );
 
@@ -42,9 +44,9 @@ class _DataColumn extends StatelessWidget {
   final double progress;
 
   const _DataColumn({
-    Key? key,
+    super.key,
     required this.progress,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -57,17 +59,17 @@ class _DataColumn extends StatelessWidget {
         SizedBox(width: double.infinity),
         Text(
           "${(progress * 100).toInt()} %",
-          style: theme.textTheme.headline1,
+          style: theme.textTheme.displayLarge,
         ),
         SizedBox(height: 4),
         Text(
           bloc.state.currentMilliliters.asMilliliters(),
-          style: theme.textTheme.bodyText1,
+          style: theme.textTheme.bodyLarge,
         ),
         SizedBox(height: 8),
         Text(
           bloc.remainigWater.asMilliliters(),
-          style: theme.textTheme.caption,
+          style: theme.textTheme.bodySmall,
         ),
       ],
     );

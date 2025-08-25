@@ -8,14 +8,14 @@ class WaterView extends StatelessWidget {
   final double progress;
 
   const WaterView({
-    Key? key,
+    super.key,
     required this.animation,
     required this.progress,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    final waveColor = Theme.of(context).accentColor.withOpacity(0.5);
+final waveColor = Theme.of(context).colorScheme.secondary.withOpacity(0.5);
 
     return AnimatedBuilder(
       animation: animation,
@@ -32,7 +32,7 @@ class WaterView extends StatelessWidget {
               child: CustomPaint(
                 painter: WaveStrokePainter(
                   animation: animation,
-                  color: Theme.of(context).backgroundColor,
+                  color: Theme.of(context).colorScheme.background,
                   phase: 10,
                   amplitude: 10,
                 ),
@@ -44,7 +44,7 @@ class WaterView extends StatelessWidget {
               child: CustomPaint(
                 painter: WaveStrokePainter(
                   animation: animation,
-                  color: Theme.of(context).backgroundColor,
+                  color: Theme.of(context).colorScheme.background,
                   phase: 20,
                   amplitude: 20,
                   strokeWidth: 1,

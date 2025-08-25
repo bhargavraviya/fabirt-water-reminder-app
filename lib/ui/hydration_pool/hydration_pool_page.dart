@@ -8,8 +8,10 @@ import 'package:waterreminder/ui/hydration_pool/remaining_hydration_text.dart';
 import 'package:waterreminder/ui/hydration_pool/water_view.dart';
 
 class HydrationPoolPage extends StatefulWidget {
+  const HydrationPoolPage({super.key});
+
   @override
-  _HydrationPoolPageState createState() => _HydrationPoolPageState();
+  State<HydrationPoolPage> createState() => _HydrationPoolPageState();
 }
 
 class _HydrationPoolPageState extends State<HydrationPoolPage>

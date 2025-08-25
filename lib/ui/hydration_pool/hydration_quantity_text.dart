@@ -5,7 +5,7 @@ import 'package:waterreminder/util/num_extension.dart';
 class HydrationQuantityText extends StatelessWidget {
   final int quantity;
 
-  HydrationQuantityText(this.quantity);
+  const HydrationQuantityText(this.quantity, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class HydrationQuantityText extends StatelessWidget {
           return Text(
             value.asMilliliters(),
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headline1,
+            // style: Theme.of(context).textTheme.headline1,
           );
         },
       ),

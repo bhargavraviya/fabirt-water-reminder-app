@@ -1,5 +1,8 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:waterreminder/constant/constant.dart';
 import 'package:waterreminder/data/platform/platform_messenger.dart';
@@ -32,8 +35,16 @@ class WaterRepository {
         Constant.methodChangeNotificationEnabled, enabled);
   }
 
-  void subscribeToDataStore() {
-    PlatformMessenger.invokeMethod(Constant.methodSubscribeToDataStore);
+  void subscribeToDataStore() async {
+  try {
+     PlatformMessenger.invokeMethod(Constant.methodSubscribeToDataStore);
+  } on MissingPluginException catch (e) {
+    // Plugin not implemented on current platform (e.g., during testing or dev)
+    debugPrint("Platform method not implemented: ${e.message}");
+  } catch (e, stack) {
+    // Log any other unexpected error
+    debugPrint("Unexpected error: $e\n$stack");
+  }
   }
 
   void setRecommendedMilliliters(int milliliters) {

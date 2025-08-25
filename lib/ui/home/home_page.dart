@@ -7,8 +7,10 @@ import 'package:waterreminder/ui/hydration_progress/hydration_progress_page.dart
 import 'package:waterreminder/ui/settings/settings_page.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -39,7 +41,7 @@ class _HomePageState extends State<HomePage> {
               secondaryAnimation,
             ) {
               return FadeThroughTransition(
-                fillColor: Theme.of(context).backgroundColor,
+                fillColor: Theme.of(context).colorScheme.background,
                 animation: primaryAnimation,
                 secondaryAnimation: secondaryAnimation,
                 child: child,

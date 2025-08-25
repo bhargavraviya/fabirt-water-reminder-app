@@ -10,13 +10,13 @@ class BottomNavBar extends StatefulWidget {
   final ValueChanged<int> onChanged;
 
   const BottomNavBar({
-    Key? key,
+    super.key,
     required this.currentPage,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
-  _BottomNavBarState createState() => _BottomNavBarState();
+  State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
@@ -124,11 +124,11 @@ class _IconButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const _IconButton({
-    Key? key,
+    super.key,
     required this.icon,
     required this.onPressed,
     this.isSelected = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

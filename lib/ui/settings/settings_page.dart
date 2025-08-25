@@ -7,6 +7,8 @@ import 'package:waterreminder/util/dialog.dart';
 import 'package:waterreminder/util/num_extension.dart';
 
 class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<WaterBloc>();
@@ -21,7 +23,7 @@ class SettingsPage extends StatelessWidget {
               SizedBox(width: double.infinity),
               Text(
                 "Settings",
-                style: theme.textTheme.headline4,
+                style: theme.textTheme.headlineMedium,
               ),
               SizedBox(height: 32),
               Padding(
@@ -33,7 +35,7 @@ class SettingsPage extends StatelessWidget {
                     ),
                     RollingSwitchButton(
                       value: bloc.state.alarmEnabled,
-                      colorOff: theme.errorColor,
+                      colorOff: theme.colorScheme.error,
                       onChange: (value) => bloc.changeAlarmEnabled(value),
                     ),
                   ],
@@ -53,12 +55,12 @@ class SettingsPage extends StatelessWidget {
                       Expanded(
                         child: Text(
                           "Daily consumption",
-                          style: theme.textTheme.bodyText2,
+                          style: theme.textTheme.bodyMedium,
                         ),
                       ),
                       Text(
                         bloc.state.recommendedMilliliters.asMilliliters(),
-                        style: theme.textTheme.bodyText2
+                        style: theme.textTheme.bodyMedium
                             ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -72,7 +74,8 @@ class SettingsPage extends StatelessWidget {
                   onPressed: () => clearDataStore(context),
                   style: ButtonStyle(
                     overlayColor: MaterialStateProperty.all(
-                        theme.errorColor.withOpacity(0.06)),
+    Theme.of(context).colorScheme.error.withOpacity(0.06),
+  ),
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -80,8 +83,8 @@ class SettingsPage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 8),
                       child: Text(
                         "Hard Reset",
-                        style: theme.textTheme.bodyText2?.copyWith(
-                          color: theme.errorColor,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.error,
                         ),
                       ),
                     ),
